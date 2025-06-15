@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+
+{% block title %}{{ post.title }} – {{ site.name }}{% endblock %}
+
+{% block content %}
+  <article class="prose mx-auto py-12 px-4">
+    <h1>{{ post.title }}</h1>
+    {{ post.content|raw }}
+  </article>
+{% endblock %}

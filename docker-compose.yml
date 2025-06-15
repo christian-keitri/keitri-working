@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  nginx:
+    container_name: keitri_nginx
+    image: nginx:latest
+    ports:
+      - "8000:80"
+    networks:
+      - internal
+    volumes:
+      - ./site:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - wordpress
+
+  wordpress:
+    container_name: keitri_wordpress
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    networks:
+      - internal
+    volumes:
+      - ./site:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
+
+  db:
+    container_name: keitri_db
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: keitri_admin
+      MYSQL_PASSWORD: keitri2025
+      MYSQL_DATABASE: keitri_db
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - internal
+
+  phpmyadmin:
+    container_name: keitri_phpmyadmin
+    image: phpmyadmin
+    networks:
+      - internal
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=keitri_db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  db_data:

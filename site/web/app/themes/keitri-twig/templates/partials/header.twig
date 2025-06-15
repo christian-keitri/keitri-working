@@ -1,0 +1,59 @@
+<header
+  class="w-full                      
+         bg-slate-950/90 bg-stone-900
+         supports-backdrop-blur:backdrop-blur-md
+         border-b border-white/10">
+
+  <div class="container mx-auto flex h-24
+              items-center justify-between px-4">
+
+    {# ––– Logo ––– #}
+    <a href="{{ site.url }}"
+       class="inline-flex items-center gap-2 font-semibold text-white">
+      <img src="{{ theme.link }}/assets/logo.png"
+           alt="Keitri Logo"
+           class="h-20 w-20 rounded-full">
+      <span class="sr-only">{{ site.name }}</span>
+    </a>
+
+    {# ––– Navigation ––– #}
+    <nav class="flex items-center justify-center">
+      {% set nav = menu is defined and menu.items ? menu.items : [
+          {'title':'Home',        'url': site.url,                      'slug':'home'},
+          {'title':'About Us',    'url': site.url ~ '/about',          'slug':'about'},
+          {'title':'Portfolio',   'url': site.url ~ '/portfolio',      'slug':'portfolio'},
+          {'title':'Contact Us',  'url': site.url ~ '/contact-us',     'slug':'contact-us'}
+      ] %}
+
+      <ul class="flex items-center gap-6 text-sm font-medium text-white">
+        {% for item in nav %}
+          {% set is_current = item.current or item.slug == post.post_name %}
+          <li>
+            <a href="{{ item.url }}"
+               class="rounded-md px-3 py-2 transition
+                      {{ is_current ? 'bg-slate-800 text-white'
+                                    : 'hover:text-indigo-300' }}">
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+
+        <li>
+          <a href="{{ site.url ~ '/book-a-call' }}"
+             class="inline-flex items-center gap-1 rounded-md
+                    bg-cyan-500 hover:bg-cyan-400
+                    px-4 py-2 text-slate-900 font-semibold
+                    active:scale-95 transition">
+            Book&nbsp;a&nbsp;call
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                 stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17 7H7m10 0-3 3m3-3-3-3m3 3v10" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</header>

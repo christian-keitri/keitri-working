@@ -1,0 +1,26 @@
+<!doctype html>
+<html {{ fn('language_attributes')|raw }}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>{% block title %}{{ site.name }}{% endblock %}</title>
+
+    {{ fn('wp_head') }}
+  </head>
+
+  <body {{ fn('body_class')|raw }}>
+    {# ── fixed dark nav bar ──────────────────────────────────────────── #}
+    {% include 'partials/header.twig' %}
+
+    {# add top-padding so content isn’t hidden behind the fixed header #}
+    <main class="min-h-screen">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% include 'partials/footer.twig' %}
+    {{ fn('wp_footer') }}
+
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </body>
+</html>

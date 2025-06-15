@@ -1,0 +1,5 @@
+<ul class="flex gap-4">
+  {% for item in menu.items %}
+    <li><a href="{{ item.link }}" class="hover:underline">{{ item.title }}</a></li>
+  {% endfor %}
+</ul>
