@@ -540,3 +540,35 @@ Stack trace:
 #30 /var/www/html/web/index.php(7): require('/var/www/html/w...')
 #31 {main}
   thrown in /var/www/html/web/app/themes/keitri-twig/templates/components/hero.twig on line 74
+[16-Jun-2025 06:28:12 UTC] PHP Fatal error:  Uncaught Twig\Error\SyntaxError: Unknown "asset" function in "components/service.twig" at line 27. in /var/www/html/web/app/themes/keitri-twig/templates/components/service.twig:27
+Stack trace:
+#0 /var/www/html/vendor/twig/twig/src/ExpressionParser/Infix/FunctionExpressionParser.php(51): Twig\Parser->getFunction('asset', 27)
+#1 /var/www/html/vendor/twig/twig/src/Parser.php(384): Twig\ExpressionParser\Infix\FunctionExpressionParser->parse(Object(Twig\Parser), Object(Twig\Node\Expression\Variable\ContextVariable), Object(Twig\Token))
+#2 /var/www/html/vendor/twig/twig/src/Parser.php(174): Twig\Parser->parseExpression()
+#3 /var/www/html/vendor/twig/twig/src/TokenParser/ForTokenParser.php(43): Twig\Parser->subparse(Array)
+#4 /var/www/html/vendor/twig/twig/src/Parser.php(218): Twig\TokenParser\ForTokenParser->parse(Object(Twig\Token))
+#5 /var/www/html/vendor/twig/twig/src/Parser.php(101): Twig\Parser->subparse(NULL, false)
+#6 /var/www/html/vendor/twig/twig/src/Environment.php(558): Twig\Parser->parse(Object(Twig\TokenStream))
+#7 /var/www/html/vendor/twig/twig/src/Environment.php(589): Twig\Environment->parse(Object(Twig\TokenStream))
+#8 /var/www/html/vendor/twig/twig/src/Environment.php(408): Twig\Environment->compileSource(Object(Twig\Source))
+#9 /var/www/html/vendor/twig/twig/src/Template.php(293): Twig\Environment->loadTemplate('__TwigTemplate_...', 'components/serv...', NULL)
+#10 /var/www/html/vendor/twig/twig/src/Environment.php(420) : eval()'d code(64): Twig\Template->load('components/serv...', 5)
+#11 /var/www/html/vendor/twig/twig/src/Template.php(446): __TwigTemplate_ef0f8b9ed897a2ddccf32b08cc79a516->block_content(Array, Array)
+#12 /var/www/html/vendor/twig/twig/src/Environment.php(420) : eval()'d code(79): Twig\Template->yieldBlock('content', Array, Array)
+#13 /var/www/html/vendor/twig/twig/src/Template.php(402): __TwigTemplate_f6a809f03836c483179fa9ef40b46d1d->doDisplay(Array, Array)
+#14 /var/www/html/vendor/twig/twig/src/Environment.php(420) : eval()'d code(47): Twig\Template->yield(Array, Array)
+#15 /var/www/html/vendor/twig/twig/src/Template.php(402): __TwigTemplate_ef0f8b9ed897a2ddccf32b08cc79a516->doDisplay(Array, Array)
+#16 /var/www/html/vendor/twig/twig/src/Template.php(358): Twig\Template->yield(Array, Array)
+#17 /var/www/html/vendor/twig/twig/src/Template.php(373): Twig\Template->display(Array)
+#18 /var/www/html/vendor/twig/twig/src/TemplateWrapper.php(51): Twig\Template->render(Array)
+#19 /var/www/html/vendor/timber/timber/src/Loader.php(178): Twig\TemplateWrapper->render(Array)
+#20 /var/www/html/vendor/timber/timber/src/Timber.php(1481): Timber\Loader->render('index.twig', Array, false, 'default')
+#21 /var/www/html/vendor/timber/timber/src/Timber.php(1616): Timber\Timber::compile('index.twig', Array, false, 'default', true)
+#22 /var/www/html/web/app/themes/keitri-twig/functions.php(38): Timber\Timber::render('index.twig', Array)
+#23 /var/www/html/web/wp/wp-includes/class-wp-hook.php(324): {closure}('/var/www/html/w...')
+#24 /var/www/html/web/wp/wp-includes/plugin.php(205): WP_Hook->apply_filters('/var/www/html/w...', Array)
+#25 /var/www/html/web/wp/wp-includes/template-loader.php(104): apply_filters('template_includ...', '/var/www/html/w...')
+#26 /var/www/html/web/wp/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#27 /var/www/html/web/index.php(7): require('/var/www/html/w...')
+#28 {main}
+  thrown in /var/www/html/web/app/themes/keitri-twig/templates/components/service.twig on line 27

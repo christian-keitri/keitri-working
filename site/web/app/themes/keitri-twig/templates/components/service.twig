@@ -1,0 +1,65 @@
+{% set services = {
+   title: "Our Expert Services",
+   subtitle: "We provide top-notch solutions for your needs.",
+   list: [
+      { name: "Web Development", description: "Building high-quality websites.", image: "web-dev.jpg" },
+      { name: "UI/UX Design", description: "Creating intuitive user experiences.", image: "ui-ux.jpg" },
+      { name: "SEO Optimization", description: "Boosting online visibility.", image: "seo.jpg" }
+   ],
+   experience: "10+",
+   projects: "500+"
+} %}
+
+<div id="services" class="bg-secondary px-4 py-8 md:py-20">
+  <div class="max-w-[1280px] mx-auto text-center">
+    
+    <!-- Section Heading -->
+    <h2 class="text-5xl font-bold mb-6">{{ services.title }}</h2>
+    <p class="text-lg text-gray-600 mb-10">{{ services.subtitle }}</p>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for service in services.list %}
+      <div class="bg-white shadow-lg p-6 rounded-lg">
+        
+        <!-- Example Hexagon Image Container -->
+ <div class="hexagon-container mx-auto mb-4">
+  <img src="/keitri-twig/assets/{{ service.image }}" alt="{{ service.name }} image">
+</div>
+        
+        <!-- Service Title -->
+        <h3 class="text-3xl font-medium text-primary mb-4">{{ service.name }}</h3>
+        
+        <!-- Service Description -->
+        <p class="text-gray-600">{{ service.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Experience & Project Stats -->
+    <div class="mt-12 flex flex-col md:flex-row justify-start items-left gap-12">
+      <div class="text-center">
+        <h3 class="text-4xl font-bold text-primary">{{ services.experience }}</h3>
+        <p class="text-lg text-gray-600">Years of Experience</p>
+      </div>
+      <div class="text-center">
+        <h3 class="text-4xl font-bold text-primary">{{ services.projects }}</h3>
+        <p class="text-lg text-gray-600">Projects Delivered</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+.hexagon-container {
+   width: 200px;
+   height: 200px;
+   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+   overflow: hidden;
+}
+.hexagon-container img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover; /* Ensures the image fills the hexagon */
+}
