@@ -68,30 +68,49 @@
 
     <!-- ▸ Floating cards column ------------------------------------- -->
     <div class="relative flex justify-center">
-      {% set cards = [
-        {'title':'Artificial Intelligence', 'icon':'fa-brain',  'y':'0'},
-        {'title':'Machine Learning',        'icon':'fa-robot',  'y':'8'},
-        {'title':'Cloud Solutions',         'icon':'fa-cloud',  'y':'16'}
-      ] %}
-      <div class="space-y-8">
-        {% for c in cards %}
-          <div class="w-64 rounded-xl bg-stone-700/60 backdrop-blur
-                      p-6 text-white/90 shadow-lg shadow-black/30
-                      hover:shadow-cyan-500/30 transition
-                      translate-y-{{ c.y }}">
-            <div class="mb-4 text-2xl">
-              <i class="fa-solid {{ c.icon }}"></i>
-            </div>
-            <h3 class="font-semibold">{{ c.title }}</h3>
-            {% if loop.last %}
-              <a href="#" class="mt-3 inline-block text-cyan-400 text-sm hover:underline">
-                Explore more →
-              </a>
-            {% endif %}
-          </div>
-        {% endfor %}
+     {% set base_path = theme.link ~ '/assets/' %}
+{% set cards = [
+  {
+    title : 'Artificial Intelligence',
+    src   : base_path ~ 'ai.png',
+    y     : 0
+  },
+  {
+    title : 'Machine Learning',
+    src   : base_path ~ 'ml.png',
+    y     : 8
+  },
+  {
+    title : 'Cloud Solutions',
+    src   : base_path ~ 'cloud.png',
+    y     : 16,
+    cta   : true
+  }
+] %}
+
+<div class="relative flex justify-center">
+  <div class="space-y-8">
+    {% for c in cards %}
+      <div class="w-64 rounded-xl bg-stone-700/60 backdrop-blur
+                  p-6 text-white/90 shadow-lg shadow-black/30
+                  hover:shadow-cyan-500/30 transition
+                  translate-y-{{ c.y }}">
+        <img src="{{ c.src }}"
+             alt="{{ c.title }}"
+             class="h-40 w-60 mb-4 object-contain" loading="lazy">
+
+        <h3 class="font-semibold">{{ c.title }}</h3>
+
+        {% if c.cta %}
+          <a href="#"
+             class="mt-3 inline-block text-cyan-400 text-sm hover:underline">
+            Explore more →
+          </a>
+        {% endif %}
       </div>
-    </div>
+    {% endfor %}
+  </div>
+</div>
 
   </div>
 </section>
