@@ -1,13 +1,8 @@
-{# ────────────────────────────────────────────────────────────────
-   HERO  –  availability badge, stats, CTA, floating service cards
-   Toggle `is_available` in PHP or here for demo.
-   ──────────────────────────────────────────────────────────────── #}
-
 {% set is_available = true %}
 
 {% if is_available %}
   {% set badge_dot = 'bg-amber-400' %}
-  {% set cta_col   = 'bg-amber-300 hover:bg-amber-200 text-black' %}
+  {% set cta_col   = 'bg-cyan-400 hover:bg-amber-200 text-black' %}
   {% set badge_txt = 'AVAILABLE FOR NEW PROJECTS' %}
 {% else %}
   {% set badge_dot = 'bg-red-500' %}
@@ -16,34 +11,35 @@
 {% endif %}
 
 <section class="relative bg-stone-800">
-  <div class="container mx-auto grid md:grid-cols-2 items-center
-              gap-10 md:gap-16 px-4 md:px-8 py-20 min-h-[80vh]">
+  <div class="container mx-auto grid md:grid-cols-2 items-center gap-10 px-4 md:px-8 py-10">
 
     <!-- ◂ Copy column ------------------------------------------------ -->
     <div class="space-y-8">
-
-      <span class="inline-flex items-center gap-2 rounded-full
-                   bg-cyan-400/70 px-3 py-1 text-sm font-semibold text-white">
+      <span class="inline-flex items-center gap-2 rounded-full bg-cyan-400/70 px-3 py-1 text-sm font-semibold text-white -mt-20">
         <span class="{{ badge_dot }} h-3.5 w-3.5 rounded-full"></span>
         {{ badge_txt }}
       </span>
 
-      <h1 class="text-4xl leading-tight md:text-6xl md:leading-[1.1]
-                 font-extrabold text-white max-w-lg">
-        Software Technology Solutions
+      <h1 class="text-4xl leading-tight md:text-4xl md:leading-[1.1] font-extrabold text-white max-w-lg">
+       Software Technology <span class="block font-semibold text-amber-400">Solutions</span>
       </h1>
+
+    
 
       <p class="text-lg leading-relaxed text-white/90 max-w-lg">
         We help you build and develop websites, web apps, mobile apps,
         custom software solutions, and more.
       </p>
 
-      <p class="font-medium italic text-white/80 max-w-md">
-        You’re in good company. We provide reliable services.
+      <div class="relative max-w-md group">
+       <p class="font-medium italic text-white/80">
+      You’re in good company. We provide reliable services.
       </p>
+      <span class="block h-1 ml-40 mt-4 w-[300px] animate-slide-and-color"></span>
+      </div>
 
       <!-- stats row -->
-      <div class="grid grid-cols-3 gap-4 text-center text-white/90">
+      <div class="grid grid-cols-3 gap-4 text-left text-white/90">
         <div>
           <span class="block text-3xl font-extrabold text-amber-400">500+</span>
           <span class="text-xs uppercase tracking-wide">Projects Delivered</span>
@@ -60,57 +56,63 @@
 
       <!-- CTA -->
       <a href="#contact"
-         class="inline-flex items-center gap-2 rounded-3xl px-7 py-3 font-semibold
-                active:scale-95 transition-colors {{ cta_col }}">
+         class="inline-flex items-left gap-2 rounded-3xl px-7 py-1 font-semibold active:scale-95 transition-colors {{ cta_col }}">
         Let’s Talk
       </a>
     </div>
 
     <!-- ▸ Floating cards column ------------------------------------- -->
     <div class="relative flex justify-center">
-     {% set base_path = theme.link ~ '/assets/' %}
-{% set cards = [
-  {
-    title : 'Artificial Intelligence',
-    src   : base_path ~ 'ai.png',
-    y     : 0
-  },
-  {
-    title : 'Machine Learning',
-    src   : base_path ~ 'ml.png',
-    y     : 8
-  },
-  {
-    title : 'Cloud Solutions',
-    src   : base_path ~ 'cloud.png',
-    y     : 16,
-    cta   : true
-  }
-] %}
+      {% set base_path = theme.link ~ '/assets/' %}
+      {% set cards = [
+        {
+          title : 'Artificial Intelligence',
+          src   : base_path ~ 'ai.png',
+          y     : 0
+        },
+        {
+          title : 'Machine Learning',
+          src   : base_path ~ 'ml.png',
+          y     : 8
+        },
+        {
+          title : 'Cloud Solutions',
+          src   : base_path ~ 'cloud.png',
+          y     : 16,
+          cta   : true
+        }
+      ] %}
 
-<div class="relative flex justify-center">
-  <div class="space-y-8">
-    {% for c in cards %}
-      <div class="w-64 rounded-xl bg-stone-700/60 backdrop-blur
-                  p-6 text-white/90 shadow-lg shadow-black/30
-                  hover:shadow-cyan-500/30 transition
-                  translate-y-{{ c.y }}">
-        <img src="{{ c.src }}"
-             alt="{{ c.title }}"
-             class="h-40 w-60 mb-4 object-contain" loading="lazy">
+      <div class="relative flex justify-center">
+        <div class="flex gap-6 overflow-x-auto">
+          {% for c in cards %}
+            <div class="w-65 rounded-xl overflow-hidden
+            text-white/90 shadow-lg shadow-black/30
+            hover:shadow-cyan-500/30 transition transform
+            translate-y-{{ c.y }}">
+              
+              <!-- Image fills top -->
+              <div class="h-90 w-full">
+                <img src="{{ c.src }}"
+                     alt="{{ c.title }}"
+                     class="h-full w-full object-cover" loading="lazy">
+              </div>
 
-        <h3 class="font-semibold">{{ c.title }}</h3>
-
-        {% if c.cta %}
-          <a href="#"
-             class="mt-3 inline-block text-cyan-400 text-sm hover:underline">
-            Explore more →
-          </a>
-        {% endif %}
+              <!-- Content -->
+              <div class="p-6">
+                <h3 class="font-semibold">{{ c.title }}</h3>
+                {% if c.cta %}
+                  <a href="#"
+                     class="mt-3 inline-block text-cyan-400 text-sm hover:underline">
+                    Explore more →
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
       </div>
-    {% endfor %}
-  </div>
-</div>
+    </div>
 
   </div>
 </section>

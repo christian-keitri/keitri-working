@@ -1,0 +1,37 @@
+{% set tools = [
+  { name: "Visual Studio Code", icon: "vscode.png" },
+  { name: "Figma", icon: "figma.png" },
+  { name: "Angular", icon: "angular.png" },
+  { name: "WordPress", icon: "wordpress.png" },
+  { name: "Vue.js", icon: "vue.png" },
+  { name: "Laravel", icon: "laravel.png" },
+  { name: "React", icon: "react.png" },
+  { name: "Ruby on Rails", icon: "rails.png" },
+  { name: "JavaScript", icon: "javascript.png" },
+  { name: "HTML5", icon: "html.png" },
+  { name: "Python", icon: "python.png" },
+  { name: "CSS3", icon: "css.png" }
+] %}
+
+<!-- Tools Section -->
+<div class="bg-stone-800 py-16 overflow-hidden">
+  <h2 class="text-4xl font-bold text-center">
+  <span class="text-amber-400">Tools</span>
+  <span class="text-white"> &amp; </span>
+  <span class="text-cyan-400">Technologies</span>
+</h2>
+  <div class="flex flex-wrap justify-center mt-12 mb-12">
+    {% for tool in tools %}
+      {% set delay = loop.index0 * 100 %}
+      <div class="w-24 m-4 flex flex-col items-center {{ loop.index is even ? '-translate-y-5' : 'translate-y-5' }}">
+        <div
+          class="{{ loop.index is even ? 'bg-cyan-500' : 'bg-amber-400' }} rounded-full w-24 h-24 flex items-center justify-center overflow-hidden animate-bounce"
+          style="animation-delay: {{ delay }}ms;"
+        >
+          <img src="{{ theme.link }}/assets/{{ tool.icon }}" alt="{{ tool.name }} Logo"
+               class="w-full h-full object-contain" />
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
