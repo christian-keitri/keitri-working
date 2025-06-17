@@ -1,65 +1,92 @@
 {% set services = {
-   title: "Our Expert Services",
-   subtitle: "We provide top-notch solutions for your needs.",
+   title: "Service We Offer",
+   subtitle: "We want what you want.",
+   subtitle1: "We provide quality service and do regular updates on project progress and make early adjustments.",
    list: [
-      { name: "Web Development", description: "Building high-quality websites.", image: "web-dev.jpg" },
-      { name: "UI/UX Design", description: "Creating intuitive user experiences.", image: "ui-ux.jpg" },
-      { name: "SEO Optimization", description: "Boosting online visibility.", image: "seo.jpg" }
+      { name: "Mobile App Development", description: "Designing and building intuitive mobile applications for seamless user experience.", image: "service1.png" },
+      { name: "Software Development", description: "Creating efficient, scalable, and secure software solutions.", image: "service2.png" },
+      { name: "Security System", description: "Implementing reliable security solutions for data protection and threat prevention.", image: "service3.png" },
+      { name: "Custom Software Solutions", description: "Developing specialized applications to optimize workflows and enhance efficiency.", image: "service4.png" }
    ],
    experience: "10+",
    projects: "500+"
 } %}
 
-<div id="services" class="bg-secondary px-4 py-8 md:py-20">
-  <div class="max-w-[1280px] mx-auto text-center">
-    
+<div id="services" class="bg-stone-800 px-4 py-8 md:py-20">
+  <div class="max-w-[1535px] mx-auto px-4 md:px-8">
+
     <!-- Section Heading -->
-    <h2 class="text-5xl font-bold mb-6">{{ services.title }}</h2>
-    <p class="text-lg text-gray-600 mb-10">{{ services.subtitle }}</p>
-
-    <!-- Services Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {% for service in services.list %}
-      <div class="bg-white shadow-lg p-6 rounded-lg">
-        
-        <!-- Example Hexagon Image Container -->
- <div class="hexagon-container mx-auto mb-4">
-  <img src="/keitri-twig/assets/{{ service.image }}" alt="{{ service.name }} image">
-</div>
-        
-        <!-- Service Title -->
-        <h3 class="text-3xl font-medium text-primary mb-4">{{ service.name }}</h3>
-        
-        <!-- Service Description -->
-        <p class="text-gray-600">{{ service.description }}</p>
-      </div>
-      {% endfor %}
+    <div class="mb-10 text-left w-[800px]">
+      <h2 class="text-5xl text-white font-bold mb-6">{{ services.title }}</h2>
+      <p class="text-3xl text-white">{{ services.subtitle }}</p>
+      <p class="text-lg text-white">{{ services.subtitle1 }}</p>
     </div>
 
-    <!-- Experience & Project Stats -->
-    <div class="mt-12 flex flex-col md:flex-row justify-start items-left gap-12">
-      <div class="text-center">
-        <h3 class="text-4xl font-bold text-primary">{{ services.experience }}</h3>
-        <p class="text-lg text-gray-600">Years of Experience</p>
+    <!-- Flex Container: Swiper (left) + Image & Stats (right) -->
+    <div class="flex flex-col lg:flex-row items-start gap-16">
+
+      <!-- Swiper Container -->
+      <div class="w-full max-w-md mt-[40px]">
+        <div class="swiper services-swiper h-[500px]">
+          <div class="swiper-wrapper">
+            {% for service in services.list %}
+              <div class="swiper-slide">
+                <div class="bg-stone-800 shadow-xl p-6 rounded-lg">
+                  <!-- Hexagon Image Container -->
+                  <div class="hexagon-container mb-4">
+                    <img src="{{ theme.link }}/assets/{{ service.image }}" alt="{{ service.name }} image">
+                  </div>
+                  <!-- Service Title -->
+                  <h3 class="text-2xl font-semibold text-cyan-400 mb-4">{{ service.name }}</h3>
+                  <p class="text-amber-400">{{ service.description }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination mt-4"></div>
+        </div>
       </div>
-      <div class="text-center">
-        <h3 class="text-4xl font-bold text-primary">{{ services.projects }}</h3>
-        <p class="text-lg text-gray-600">Projects Delivered</p>
+
+      <!-- Image + Stats Box -->
+      <div class="w-full rounded-xl overflow-hidden ml-auto mb-[60px] lg:translate-x-10">
+        
+        <!-- Image -->
+        <div class="w-full rounded-xl overflow-hidden">
+          <img src="{{ theme.link }}/assets/pic.jpg" alt="Service Photo" class="w-full object-cover">
+        </div>
+
+        <!-- Stats Box Overlapping the Image -->
+        <div class="absolute bottom-6 right-6 bg-cyan-600 text-white rounded-xl px-6 py-4 shadow-lg w-fit">
+          <div class="flex gap-10 justify-center">
+            <div class="text-center">
+              <h3 class="text-3xl font-bold text-amber-400">{{ services.experience }}</h3>
+              <p class="text-sm">years of experience</p>
+            </div>
+            <div class="text-center">
+              <h3 class="text-3xl font-bold text-amber-400">{{ services.projects }}</h3>
+              <p class="text-sm">projects delivered</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-    
   </div>
 </div>
 
 
+<style>
 .hexagon-container {
-   width: 200px;
-   height: 200px;
-   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-   overflow: hidden;
+  width: 200px;
+  height: 200px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  overflow: hidden;
 }
 .hexagon-container img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover; /* Ensures the image fills the hexagon */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
+</style>
