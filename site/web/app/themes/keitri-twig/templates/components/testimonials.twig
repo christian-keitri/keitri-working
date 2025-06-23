@@ -1,0 +1,88 @@
+{# templates/partials/testimonials.twig #}
+<section id="testimonials" class="py-16 bg-stone-800">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-amber-400 mb-8">Client’s Testimonials</h2>
+
+    <div class="relative">
+      <div class="swiper testimonials-swiper">
+        <div class="swiper-wrapper">
+
+          {# Slide 1 #}
+          <div class="swiper-slide bg-transparent p-6 rounded-lg shadow-lg text-center flex flex-col items-center space-y-4">
+            <img src="{{ theme.link }}/assets/testimonial1.jpg" alt="Jane Doe" class="w-20 h-20 rounded-full object-cover" />
+            <p class="italic text-lg text-white">“This app changed my life!”</p>
+            <p class="mt-2 font-semibold text-white">Jane Doe</p>
+            <p class="text-sm text-white">Project Manager</p>
+          </div>
+
+          {# Slide 2 #}
+          <div class="swiper-slide bg-transparent p-6 rounded-lg shadow-lg text-center flex flex-col items-center space-y-4">
+            <img src="{{ theme.link }}/assets/testimonial2.jpg" alt="Michael Lee" class="w-20 h-20 rounded-full object-cover" />
+            <p class="italic text-lg text-white">“Incredible support and fast results.”</p>
+            <p class="mt-2 font-semibold text-white">Michael Lee</p>
+            <p class="text-sm text-white">Startup Founder</p>
+          </div>
+
+          {# Slide 3 #}
+          <div class="swiper-slide bg-transparent p-6 rounded-lg shadow-lg text-center flex flex-col items-center space-y-4">
+            <img src="{{ theme.link }}/assets/testimonial3.jpg" alt="Anna Gomez" class="w-20 h-20 rounded-full object-cover" />
+            <p class="italic text-lg text-white">“Very easy to use and boosted our team productivity.”</p>
+            <p class="mt-2 font-semibold text-white">Anna Gomez</p>
+            <p class="text-sm text-white">Team Lead</p>
+          </div>
+
+          {# Slide 4 #}
+          <div class="swiper-slide bg-transparent p-6 rounded-lg shadow-lg text-center flex flex-col items-center space-y-4">
+            <img src="{{ theme.link }}/assets/testimonial4.png" alt="David Kim" class="w-20 h-20 rounded-full object-cover" />
+            <p class="italic text-lg text-white">“A reliable partner for all our development needs.”</p>
+            <p class="mt-2 font-semibold text-white">David Kim</p>
+            <p class="text-sm text-white">CTO, TechCorp</p>
+          </div>
+
+        </div>
+
+        {# Navigation Arrows #}
+        <button class="testimonials-prev absolute left-0 top-1/2 -translate-y-8 text-amber-400 hover:text-cyan-400 p-2 z-10">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M12.293 16.293a1 1 0 010 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 111.414 1.414L8.414 10l5.293 5.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+        </button>
+
+        <button class="testimonials-next absolute right-0 top-1/2 -translate-y-8 text-amber-400 hover:text-cyan-400 p-2 z-10">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.707 3.707a1 1 0 010-1.414l6 6a1 1 0 010 1.414l-6 6a1 1 0 11-1.414-1.414L11.586 10 6.293 4.707a1 1 0 011.414-1.414z" clip-rule="evenodd" />
+        </svg>
+        </button>
+
+
+      
+
+    <div class="mt-8 text-right">
+      <a href="{{ site.url }}/get-started" class="inline-block bg-cyan-400 text-black font-bold py-3 px-6 rounded-3xl hover:bg-amber-400 transition">
+        GET STARTED WITH US
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ✅ Place this script inside your footer_scripts block #}
+{% block footer_scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.testimonials-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      navigation: {
+        nextEl: '.testimonials-next',
+        prevEl: '.testimonials-prev',
+      },
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+  });
+</script>
+{% endblock %}

@@ -3,10 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    
     <title>{% block title %}{{ site.name }}{% endblock %}</title>
 
-    <!-- Swiper CSS -->
+    {# Favicon / Meta tags (optional) #}
+    <link rel="icon" href="{{ theme.link }}/assets/favicon.ico" />
+
+    {# Tailwind (if you're using a CDN or custom built CSS) #}
+    {# Example: <link href="{{ theme.link }}/assets/styles.css" rel="stylesheet" /> #}
+
+    {# Swiper CSS #}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     {{ fn('wp_head') }}
@@ -22,7 +28,13 @@
     {% include 'partials/footer.twig' %}
     {{ fn('wp_footer') }}
 
-    <!-- Alpine.js -->
+    {# Alpine.js (optional if you use it) #}
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    {# Swiper JS #}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    {# Allow child templates to inject custom JS (e.g. Swiper init) #}
+    {% block footer_scripts %}{% endblock %}
   </body>
 </html>
