@@ -1,0 +1,70 @@
+<section class="w-full bg-stone-800 text-white py-16 px-4">
+  <div class="max-w-[1280px] mx-auto">
+    <!-- Section Title -->
+    <div class="text-center mb-16">
+      <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold">
+        Dive into our latest <span class="text-yellow-400">portfolio</span> updates
+      </h2>
+    </div>
+
+    <!-- Portfolio Items -->
+    <div class="flex flex-col gap-16">
+      {% set projects = [
+        {
+          category: 'Web Development',
+          title: 'POS',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          image: 'pos.png',
+          url: '#'
+        },
+        {
+          category: 'App Development',
+          title: 'Finance Tracker',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          image: 'finance-tracker.png',
+          url: '#'
+        },
+        {
+          category: 'Web Development',
+          title: 'Delivery App',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          image: 'delivery-app.png',
+          url: '#'
+        },
+        {
+          category: 'Web Development',
+          title: 'Habit Tracker',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          image: 'habit-tracker.png',
+          url: '#'
+        }
+      ] %}
+
+      {% for project in projects %}
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <!-- Text -->
+          <div>
+            <p class="text-sm text-gray-400 mb-1">{{ project.category }}</p>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2">{{ project.title }}</h3>
+            <p class="text-sm text-gray-300 mb-4">{{ project.description }}</p>
+            <a href="{{ project.url }}" class="inline-block bg-sky-500 hover:bg-sky-600 text-white text-xs font-medium py-2 px-4 rounded">
+              View case study →
+            </a>
+          </div>
+
+          <!-- Image -->
+          <div class="w-full">
+            <img src="{{ theme.link }}/assets/{{ project.image }}" alt="{{ project.title }}" class="w-full max-w-md mx-auto rounded-md">
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Button -->
+    <div class="text-center mt-16">
+      <a href="/portfolio" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded">
+        Read More
+      </a>
+    </div>
+  </div>
+</section>

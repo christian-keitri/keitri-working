@@ -61,58 +61,35 @@
       </a>
     </div>
 
-    <!-- ▸ Floating cards column ------------------------------------- -->
-    <div class="relative flex justify-center">
-      {% set base_path = theme.link ~ '/assets/' %}
-      {% set cards = [
-        {
-          title : 'Artificial Intelligence',
-          src   : base_path ~ 'ai.png',
-          y     : 0
-        },
-        {
-          title : 'Machine Learning',
-          src   : base_path ~ 'ml.png',
-          y     : 8
-        },
-        {
-          title : 'Cloud Solutions',
-          src   : base_path ~ 'cloud.png',
-          y     : 16,
-          cta   : true
-        }
-      ] %}
+   <!-- ▸ Floating cards column ------------------------------------- -->
+<div class="relative w-full">
+  {% set base_path = theme.link ~ '/assets/' %}
+  {% set cards = [
+    { title: 'Artificial Intelligence', src: base_path ~ 'ai.png', y: 0 },
+    { title: 'Machine Learning', src: base_path ~ 'ml.png', y: 8 },
+    { title: 'Cloud Solutions', src: base_path ~ 'cloud.png', y: 16, cta: true }
+  ] %}
 
-      <div class="relative flex justify-center">
-        <div class="flex gap-6 overflow-x-auto">
-          {% for c in cards %}
-            <div class="w-65 rounded-xl overflow-hidden
-            text-white/90 shadow-lg shadow-black/30
-            hover:shadow-cyan-500/30 transition transform
-            translate-y-{{ c.y }}">
-              
-              <!-- Image fills top -->
-              <div class="h-90 w-full">
-                <img src="{{ c.src }}"
-                     alt="{{ c.title }}"
-                     class="h-full w-full object-cover" loading="lazy">
-              </div>
-
-              <!-- Content -->
-              <div class="p-6">
-                <h3 class="font-semibold">{{ c.title }}</h3>
-                {% if c.cta %}
-                  <a href="#"
-                     class="mt-3 inline-block text-cyan-400 text-sm hover:underline">
-                    Explore more →
-                  </a>
-                {% endif %}
-              </div>
-            </div>
-          {% endfor %}
+  <!-- Constrain width to force scroll -->
+  <div class="max-w-[720px] overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide mx-auto">
+    <div class="flex gap-6 w-max px-4">
+      {% for c in cards %}
+        <div class="snap-center w-[280px] flex-shrink-0 rounded-xl overflow-hidden text-white/90 shadow-lg shadow-black/30 hover:shadow-cyan-500/30 transition transform translate-y-{{ c.y }}">
+          <div class="h-60 w-full">
+            <img src="{{ c.src }}" alt="{{ c.title }}" class="h-full w-full object-cover" loading="lazy">
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold">{{ c.title }}</h3>
+            {% if c.cta %}
+              <a href="#" class="mt-3 inline-block text-cyan-400 text-sm hover:underline">
+                Explore more →
+              </a>
+            {% endif %}
+          </div>
         </div>
-      </div>
+      {% endfor %}
     </div>
-
+  </div>
+</div>
   </div>
 </section>
