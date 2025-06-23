@@ -13,32 +13,26 @@
 <section class="relative bg-stone-800">
   <div class="container mx-auto grid md:grid-cols-2 items-center gap-10 px-4 md:px-8 py-10">
 
-    <!-- ◂ Copy column ------------------------------------------------ -->
+    <!-- Left Column -->
     <div class="space-y-8">
       <span class="inline-flex items-center gap-2 rounded-full bg-cyan-400/70 px-3 py-1 text-sm font-semibold text-white -mt-20">
         <span class="{{ badge_dot }} h-3.5 w-3.5 rounded-full"></span>
         {{ badge_txt }}
       </span>
 
-      <h1 class="text-4xl leading-tight md:text-4xl md:leading-[1.1] font-extrabold text-white max-w-lg">
-       Software Technology <span class="block font-semibold text-amber-400">Solutions</span>
+      <h1 class="text-4xl leading-tight md:text-4xl font-extrabold text-white max-w-lg">
+        Software Technology <span class="block font-semibold text-amber-400">Solutions</span>
       </h1>
 
-    
-
       <p class="text-lg leading-relaxed text-white/90 max-w-lg">
-        We help you build and develop websites, web apps, mobile apps,
-        custom software solutions, and more.
+        We help you build and develop websites, web apps, mobile apps, custom software solutions, and more.
       </p>
 
       <div class="relative max-w-md group">
-       <p class="font-medium italic text-white/80">
-      You’re in good company. We provide reliable services.
-      </p>
-      <span class="block h-1 ml-40 mt-4 w-[300px] animate-slide-and-color"></span>
+        <p class="font-medium italic text-white/80">You’re in good company. We provide reliable services.</p>
+        <span class="block h-1 ml-40 mt-4 w-[300px] animate-slide-and-color"></span>
       </div>
 
-      <!-- stats row -->
       <div class="grid grid-cols-3 gap-4 text-left text-white/90">
         <div>
           <span class="block text-3xl font-extrabold text-amber-400">500+</span>
@@ -54,42 +48,18 @@
         </div>
       </div>
 
-      <!-- CTA -->
-      <a href="#contact"
-         class="inline-flex items-left gap-2 rounded-3xl px-7 py-1 font-semibold active:scale-95 transition-colors {{ cta_col }}">
+      <a href="#contact" class="inline-flex items-left gap-2 rounded-3xl px-7 py-2 font-semibold active:scale-95 transition-colors {{ cta_col }}">
         Let’s Talk
       </a>
     </div>
 
-   <!-- ▸ Floating cards column ------------------------------------- -->
-<div class="relative w-full">
-  {% set base_path = theme.link ~ '/assets/' %}
-  {% set cards = [
-    { title: 'Artificial Intelligence', src: base_path ~ 'ai.png', y: 0 },
-    { title: 'Machine Learning', src: base_path ~ 'ml.png', y: 8 },
-    { title: 'Cloud Solutions', src: base_path ~ 'cloud.png', y: 16, cta: true }
-  ] %}
-
-  <!-- Constrain width to force scroll -->
-  <div class="max-w-[720px] overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide mx-auto">
-    <div class="flex gap-6 w-max px-4">
-      {% for c in cards %}
-        <div class="snap-center w-[280px] flex-shrink-0 rounded-xl overflow-hidden text-white/90 shadow-lg shadow-black/30 hover:shadow-cyan-500/30 transition transform translate-y-{{ c.y }}">
-          <div class="h-60 w-full">
-            <img src="{{ c.src }}" alt="{{ c.title }}" class="h-full w-full object-cover" loading="lazy">
-          </div>
-          <div class="p-6">
-            <h3 class="font-semibold">{{ c.title }}</h3>
-            {% if c.cta %}
-              <a href="#" class="mt-3 inline-block text-cyan-400 text-sm hover:underline">
-                Explore more →
-              </a>
-            {% endif %}
-          </div>
-        </div>
-      {% endfor %}
+    <!-- Right Column: Static Images Only -->
+    <div class="flex flex-col gap-6 items-center">
+      {% set base_path = theme.link ~ '/assets/' %}
+      <img src="{{ base_path ~ 'hero.png' }}" alt="Artificial Intelligence" class="w-[300px] h-[300px]">
+      
+      
     </div>
-  </div>
-</div>
+
   </div>
 </section>

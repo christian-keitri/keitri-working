@@ -34,7 +34,7 @@
         {
           category: 'Web Development',
           title: 'Habit Tracker',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          description: 'This habit tracker app is a lightweight and user-friendly tool designed to help users build better daily routines and stay consistent with their goals. Whether it\'s health, productivity, wellness, or personal development, this app makes habit-building simple and visual.',
           image: 'habit-tracker.png',
           url: '#'
         }
@@ -44,10 +44,12 @@
         <div class="grid md:grid-cols-2 gap-8 items-center">
           <!-- Text -->
           <div>
-            <p class="text-sm text-gray-400 mb-1">{{ project.category }}</p>
+            <p class="inline-block bg-amber-400 text-black text-xs font-semibold px-3 py-1 rounded-full mb-2 w-fit">
+             {{ project.category }}
+            </p>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2">{{ project.title }}</h3>
             <p class="text-sm text-gray-300 mb-4">{{ project.description }}</p>
-            <a href="{{ project.url }}" class="inline-block bg-sky-500 hover:bg-sky-600 text-white text-xs font-medium py-2 px-4 rounded">
+            <a href="{{ project.url }}" class="inline-block bg-sky-500 hover:bg-yellow-600 text-white text-xs font-medium py-2 px-4 rounded-3xl">
               View case study →
             </a>
           </div>
@@ -62,7 +64,7 @@
 
     <!-- Button -->
     <div class="text-center mt-16">
-      <a href="/portfolio" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded">
+      <a href="/portfolio" class="inline-block bg-cyan-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-3xl">
         Read More
       </a>
     </div>
