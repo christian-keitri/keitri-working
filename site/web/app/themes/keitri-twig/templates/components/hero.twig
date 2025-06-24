@@ -53,12 +53,15 @@
       </a>
     </div>
 
-    <!-- Right Column: Static Images Only -->
-    <div class="flex flex-col gap-6 items-center">
-      {% set base_path = theme.link ~ '/assets/' %}
-      <img src="{{ base_path ~ 'hero.png' }}" alt="Artificial Intelligence" class="w-[300px] h-[300px]">
-      
-      
+    <!-- Right Column with Adjustable Image -->
+    <div class="relative flex justify-center items-center">
+      <div class="relative w-[500px] h-[350px] sm:w-[450px] sm:h-[450px] lg:w-[600px] lg:h-[600px] transform translate-x-6 -translate-y-4">
+        <img
+          src="{{ theme.link }}/assets/hero.png"
+          alt="Artificial Intelligence"
+          class="absolute inset-0 w-full h-full object-contain"
+        />
+      </div>
     </div>
 
   </div>
