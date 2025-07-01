@@ -1,8 +1,11 @@
-<header
-  class="w-full                      
-         bg-slate-950/90 bg-stone-800
-         supports-backdrop-blur:backdrop-blur-md
-         border-b border-white/10">
+{# Add this in your layout's <head> section #}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+{# HEADER START #}
+<header class="w-full                      
+               bg-slate-950/90 bg-stone-800
+               supports-backdrop-blur:backdrop-blur-md
+               border-b border-white/10">
 
   <div class="container mx-auto flex h-24
               items-center justify-between px-4">
@@ -13,7 +16,7 @@
       <img src="{{ theme.link }}/assets/logo.png"
            alt="Keitri Logo"
            class="h-20 w-20 rounded-full">
-       <span class="text-xl sm:text-2xl font-bold">Keitri Software Solutions</span>
+      <span class="text-xl sm:text-2xl font-bold">Keitri Software Solutions</span>
     </a>
 
     {# ––– Navigation ––– #}
@@ -25,24 +28,24 @@
           {'title':'Contact Us',  'url': site.url ~ '/contact-us',     'slug':'contact-us'}
       ] %}
 
-     {# Navigation box wrapper #}
-<div class="bg-zinc-900 px-4 py-2 rounded-full shadow-md border border-white/10">
-  <ul class="flex items-center gap-4 text-sm font-medium text-white">
-    {% for item in nav %}
-      {% set is_current = item.current or item.slug == post.post_name %}
-      <li>
-        <a href="{{ item.url }}"
-           class="px-4 py-2 rounded-full transition
-                  {{ is_current ? 'bg-black text-white font-semibold'
-                                : 'hover:text-amber-400' }}">
-          {{ item.title }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+      {# Navigation wrapper #}
+      <div class="bg-zinc-900 px-4 py-2 rounded-full shadow-md border border-white/10">
+        <ul class="flex items-center gap-4 text-sm font-medium text-white">
+          {% for item in nav %}
+            {% set is_current = item.current or item.slug == post.post_name %}
+            <li>
+              <a href="{{ item.url }}"
+                 class="px-4 py-2 rounded-full transition
+                        {{ is_current ? 'bg-black text-white font-semibold'
+                                      : 'hover:text-amber-400' }}">
+                {{ item.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
 
-      {# Book a call button stays outside the box #}
+      {# Book a call button #}
       <a href="{{ site.url ~ '/book-a-call' }}"
          class="inline-flex items-center gap-1 rounded-3xl
                 bg-cyan-400 hover:bg-amber-400
