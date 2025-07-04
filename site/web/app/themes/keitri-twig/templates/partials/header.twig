@@ -1,64 +1,70 @@
-{# Add this in your layout's <head> section #}
+{# Include this in your <head> #}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-{# HEADER START #}
-<header class="w-full                      
-               bg-slate-950/90 bg-stone-800
-               supports-backdrop-blur:backdrop-blur-md
-               border-b border-white/10">
+<header class="sticky top-0 z-50 w-full bg-stone-800/90 backdrop-blur-md border-b border-white/10">
+  <div class="container mx-auto flex items-center justify-between px-4 md:px-8 py-4">
 
-  <div class="container mx-auto flex h-24
-              items-center justify-between px-4">
-
-    {# ––– Logo ––– #}
-    <a href="{{ site.url }}"
-       class="inline-flex items-center gap-2 font-semibold text-white">
-      <img src="{{ theme.link }}/assets/logo.png"
-           alt="Keitri Logo"
-           class="h-20 w-20 rounded-full">
-      <span class="text-xl sm:text-2xl font-bold">Keitri Software Solutions</span>
+    {# Logo #}
+    <a href="{{ site.url }}" class="flex items-center gap-3 text-white">
+      <img src="{{ theme.link }}/assets/logo.png" alt="Keitri Logo" class="h-12 w-12 rounded-full">
+      <span class="text-xl font-bold tracking-tight">Keitri Software Solutions</span>
     </a>
 
-    {# ––– Navigation ––– #}
-    <nav class="flex items-center gap-6">
+    {# Desktop Nav #}
+    <nav class="hidden md:flex items-center gap-6">
       {% set nav = menu is defined and menu.items ? menu.items : [
-          {'title':'Home',        'url': site.url,                      'slug':'home'},
-          {'title':'About Us',    'url': site.url ~ '/about',          'slug':'about'},
-          {'title':'Portfolio',   'url': site.url ~ '/portfolio',      'slug':'portfolio'},
-          {'title':'Contact Us',  'url': site.url ~ '/contact-us',     'slug':'contact-us'}
+        {'title':'Home',        'url': site.url,                  'slug':'home'},
+        {'title':'About Us',    'url': site.url ~ '/about',       'slug':'about'},
+        {'title':'Portfolio',   'url': site.url ~ '/portfolio',   'slug':'portfolio'},
+        {'title':'Contact Us',  'url': site.url ~ '/contact-us',  'slug':'contact-us'}
       ] %}
 
-      {# Navigation wrapper #}
-      <div class="bg-zinc-900 px-4 py-2 rounded-full shadow-md border border-white/10">
-        <ul class="flex items-center gap-4 text-sm font-medium text-white">
-          {% for item in nav %}
-            {% set is_current = item.current or item.slug == post.post_name %}
-            <li>
-              <a href="{{ item.url }}"
-                 class="px-4 py-2 rounded-full transition
-                        {{ is_current ? 'bg-black text-white font-semibold'
-                                      : 'hover:text-amber-400' }}">
-                {{ item.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+      <ul class="flex items-center gap-4 text-sm font-medium text-white">
+        {% for item in nav %}
+          {% set is_current = item.current or item.slug == post.post_name %}
+          <li>
+            <a href="{{ item.url }}"
+               class="px-4 py-2 rounded-full transition
+                      {{ is_current ? 'bg-black text-white font-semibold'
+                                    : 'hover:text-amber-400' }}">
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
 
-      {# Book a call button #}
       <a href="{{ site.url ~ '/book-a-call' }}"
-         class="inline-flex items-center gap-1 rounded-3xl
-                bg-cyan-400 hover:bg-amber-400
-                px-4 py-2 text-slate-900 font-semibold
-                active:scale-95 transition">
-        Book&nbsp;a&nbsp;call
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M17 7H7m10 0-3 3m3-3-3-3m3 3v10" />
-        </svg>
+         class="ml-4 inline-flex items-center gap-2 rounded-full px-6 py-2 bg-cyan-400 hover:bg-amber-400 text-black font-semibold transition-all active:scale-95">
+        Book a call
+        <i class="fas fa-arrow-up-right-from-square text-sm"></i>
       </a>
     </nav>
 
+    {# Mobile Toggle #}
+    <button id="mobile-menu-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
+
+  {# Mobile Nav Drawer #}
+  <div id="mobile-menu" class="hidden md:hidden bg-stone-900 border-t border-white/10">
+    <div class="flex flex-col px-6 py-4 space-y-3">
+      {% for item in nav %}
+        <a href="{{ item.url }}" class="text-white py-2 border-b border-white/10 hover:text-amber-400 transition">
+          {{ item.title }}
+        </a>
+      {% endfor %}
+      <a href="{{ site.url ~ '/book-a-call' }}"
+         class="inline-block mt-3 rounded-full px-6 py-2 bg-cyan-400 hover:bg-amber-400 text-black font-semibold text-center transition">
+        Book a call
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function () {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
 </header>
