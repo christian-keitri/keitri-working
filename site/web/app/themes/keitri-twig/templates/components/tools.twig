@@ -13,25 +13,61 @@
   { name: "CSS3", icon: "css.png" }
 ] %}
 
-<!-- Tools Section -->
-<div class="bg-stone-800 py-16 overflow-hidden">
-  <h2 class="text-4xl font-bold text-center">
-  <span class="text-amber-400">Tools</span>
-  <span class="text-white"> &amp; </span>
-  <span class="text-cyan-400">Technologies</span>
-</h2>
-  <div class="flex flex-wrap justify-center mt-12 mb-12">
-    {% for tool in tools %}
-      {% set delay = loop.index0 * 100 %}
-      <div class="w-24 m-4 flex flex-col items-center {{ loop.index is even ? '-translate-y-5' : 'translate-y-5' }}">
-        <div
-          class="{{ loop.index is even ? 'bg-cyan-500' : 'bg-amber-400' }} rounded-full w-24 h-24 flex items-center justify-center overflow-hidden animate-bounce"
-          style="animation-delay: {{ delay }}ms;"
-        >
-          <img src="{{ theme.link }}/assets/{{ tool.icon }}" alt="{{ tool.name }} Logo"
-               class="w-full h-full object-contain" />
+<!-- Tools & Technologies Section -->
+<div class="w-full bg-gradient-to-br from-stone-900 to-stone-800 py-20 px-4 relative overflow-hidden">
+  
+  <!-- Decorative SVG Background -->
+  <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none select-none z-0">
+    <img src="{{ theme.link }}/assets/dots.svg" alt="decorative background" class="w-full h-full object-cover">
+  </div>
+
+  <!-- Section Content -->
+  <div class="relative z-10">
+    <!-- Section Title -->
+    <div class="text-center mb-12 px-4">
+      <h2 class="text-4xl sm:text-5xl font-bold tracking-tight mb-2">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-cyan-400">
+          Tools & Technologies
+        </span>
+      </h2>
+      <p class="text-gray-400 mt-3 text-sm sm:text-base max-w-2xl mx-auto">
+        We use modern tools that power efficient and scalable development.
+      </p>
+    </div>
+
+    <!-- Icon Grid -->
+    <div class="flex flex-wrap justify-center gap-8 sm:gap-10 px-4">
+      {% for tool in tools %}
+        {% set delay = (loop.index0 * 0.2) + (loop.index0 is even ? 0.1 : 0.05) %}
+        <div class="relative flex flex-col items-center w-24 sm:w-28 transition duration-500 transform hover:scale-105 hover:-translate-y-1"
+             data-aos="fade-up" data-aos-delay="{{ loop.index * 80 }}">
+          
+          <!-- Bouncing Icon with staggered delay -->
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center
+                      bg-gradient-to-br from-amber-400 to-cyan-400 shadow-lg
+                      backdrop-blur-md bg-opacity-30 border border-white/10
+                      animate-slow-bounce"
+               style="animation-delay: {{ delay }}s">
+            <img 
+              src="{{ theme.link }}/assets/{{ tool.icon }}"
+              alt="{{ tool.name }} Logo"
+              class="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+              loading="lazy"
+              aria-label="{{ tool.name }} logo"
+            />
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </div>
+
+<!-- AOS Library -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
+</script>

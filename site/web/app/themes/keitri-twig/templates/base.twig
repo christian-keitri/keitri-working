@@ -16,6 +16,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     {{ fn('wp_head') }}
+
+
+     <style>
+    /* Hide scrollbar for all browsers */
+    .scrollbar-hide {
+      -ms-overflow-style: none;  /* IE & Edge */
+      scrollbar-width: none;     /* Firefox */
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;             /* Chrome, Safari, Opera */
+    }
+  </style>
+  
   </head>
 
   <body {{ fn('body_class')|raw }}>

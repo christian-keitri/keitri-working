@@ -1,83 +1,89 @@
-{# templates/partials/testimonials.twig #}
-<section id="testimonials" class="py-16 bg-stone-800">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-amber-400 mb-8">Client’s Testimonials</h2>
+<section id="testimonials" class="bg-stone-800 py-16 px-4 sm:px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+    
+    <h2 class="text-3xl sm:text-4xl font-bold text-amber-400 text-center mb-12">
+      What Our Clients Say
+    </h2>
 
+    <!-- Swiper Container -->
     <div class="relative">
       <div class="swiper testimonials-swiper">
         <div class="swiper-wrapper">
 
-          {# Slide 1 #}
-          <div class="swiper-slide bg-transparent p-6 rounded-lg shadow-lg text-center flex flex-col items-center space-y-4">
-            <img src="{{ theme.link }}/assets/testimonial1.jpg" alt="Jane Doe" class="w-20 h-20 rounded-full object-cover" />
-            <p class="italic text-lg text-white">“This app changed my life!”</p>
-            <p class="mt-2 font-semibold text-white">Jane Doe</p>
-            <p class="text-sm text-white">Project Manager</p>
-          </div>
+          {% set testimonials = [
+            {
+              name: 'Jane Doe',
+              title: 'Project Manager',
+              image: 'testimonial1.jpg',
+              quote: 'This app changed my life! I’m grateful.'
+            },
+            {
+              name: 'Michael Lee',
+              title: 'Startup Founder',
+              image: 'testimonial2.jpg',
+              quote: 'Incredible support and fast results. I love it'
+            },
+            {
+              name: 'Anna Gomez',
+              title: 'Team Lead',
+              image: 'testimonial3.jpg',
+              quote: 'Very easy to use and boosted our team productivity.'
+            },
+            {
+              name: 'David Kim',
+              title: 'CTO, TechCorp',
+              image: 'testimonial4.png',
+              quote: 'A reliable partner for all our development needs.'
+            }
+          ] %}
 
-          {# Slide 2 #}
-          <div class="swiper-slide bg-transparent p-6 rounded-lg shadow-lg text-center flex flex-col items-center space-y-4">
-            <img src="{{ theme.link }}/assets/testimonial2.jpg" alt="Michael Lee" class="w-20 h-20 rounded-full object-cover" />
-            <p class="italic text-lg text-white">“Incredible support and fast results.”</p>
-            <p class="mt-2 font-semibold text-white">Michael Lee</p>
-            <p class="text-sm text-white">Startup Founder</p>
-          </div>
-
-          {# Slide 3 #}
-          <div class="swiper-slide bg-transparent p-6 rounded-lg shadow-lg text-center flex flex-col items-center space-y-4">
-            <img src="{{ theme.link }}/assets/testimonial3.jpg" alt="Anna Gomez" class="w-20 h-20 rounded-full object-cover" />
-            <p class="italic text-lg text-white">“Very easy to use and boosted our team productivity.”</p>
-            <p class="mt-2 font-semibold text-white">Anna Gomez</p>
-            <p class="text-sm text-white">Team Lead</p>
-          </div>
-
-          {# Slide 4 #}
-          <div class="swiper-slide bg-transparent p-6 rounded-lg shadow-lg text-center flex flex-col items-center space-y-4">
-            <img src="{{ theme.link }}/assets/testimonial4.png" alt="David Kim" class="w-20 h-20 rounded-full object-cover" />
-            <p class="italic text-lg text-white">“A reliable partner for all our development needs.”</p>
-            <p class="mt-2 font-semibold text-white">David Kim</p>
-            <p class="text-sm text-white">CTO, TechCorp</p>
-          </div>
+          {% for t in testimonials %}
+            <div class="swiper-slide p-6">
+              <figure class="bg-stone-900/80 rounded-xl shadow-md p-6 text-center flex flex-col items-center gap-4 h-full">
+                <img src="{{ theme.link }}/assets/{{ t.image }}" alt="{{ t.name }}" class="w-20 h-20 rounded-full object-cover shadow" loading="lazy">
+                <blockquote class="italic text-white text-lg sm:text-xl">“{{ t.quote|striptags }}”</blockquote>
+                <figcaption class="mt-2 text-white font-semibold">{{ t.name }}</figcaption>
+                <p class="text-sm text-gray-400">{{ t.title }}</p>
+              </figure>
+            </div>
+          {% endfor %}
 
         </div>
 
-        {# Navigation Arrows #}
-        <button class="testimonials-prev absolute left-0 top-1/2 -translate-y-8 text-amber-400 hover:text-cyan-400 p-2 z-10">
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M12.293 16.293a1 1 0 010 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 111.414 1.414L8.414 10l5.293 5.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-        </svg>
-        </button>
+        <!-- Navigation Arrows -->
+        <div class="hidden sm:block">
+          <button class="testimonials-prev absolute -left-6 top-1/2 -translate-y-1/2 text-cyan-400 hover:text-amber-400 z-10">
+            <i class="fas fa-chevron-left text-2xl"></i>
+          </button>
+          <button class="testimonials-next absolute -right-6 top-1/2 -translate-y-1/2 text-cyan-400 hover:text-amber-400 z-10">
+            <i class="fas fa-chevron-right text-2xl"></i>
+          </button>
+        </div>
+      </div>
 
-        <button class="testimonials-next absolute right-0 top-1/2 -translate-y-8 text-amber-400 hover:text-cyan-400 p-2 z-10">
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M7.707 3.707a1 1 0 010-1.414l6 6a1 1 0 010 1.414l-6 6a1 1 0 11-1.414-1.414L11.586 10 6.293 4.707a1 1 0 011.414-1.414z" clip-rule="evenodd" />
-        </svg>
-        </button>
-
-
-      
-
-    <div class="mt-8 text-right">
-      <a href="{{ site.url }}/get-started" class="inline-block bg-cyan-400 text-black font-bold py-3 px-6 rounded-3xl hover:bg-amber-400 transition">
-        GET STARTED WITH US
-      </a>
+      <!-- CTA Button -->
+      <div class="mt-12 text-center">
+        <a href="{{ site.url }}/get-started" class="inline-block bg-cyan-400 hover:bg-amber-400 text-black font-bold py-3 px-6 rounded-3xl transition">
+          GET STARTED WITH US
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-{# ✅ Place this script inside your footer_scripts block #}
+
 {% block footer_scripts %}
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     new Swiper('.testimonials-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 24,
       loop: true,
+      spaceBetween: 24,
       navigation: {
         nextEl: '.testimonials-next',
         prevEl: '.testimonials-prev',
       },
       breakpoints: {
+        320: { slidesPerView: 1 },
         640: { slidesPerView: 1 },
         768: { slidesPerView: 2 },
         1024: { slidesPerView: 3 },
