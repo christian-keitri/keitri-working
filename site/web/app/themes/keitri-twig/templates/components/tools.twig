@@ -18,7 +18,6 @@
   
   <!-- Decorative SVG Background -->
   <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none select-none z-0">
-    <img src="{{ theme.link }}/assets/dots.svg" alt="decorative background" class="w-full h-full object-cover">
   </div>
 
   <!-- Section Content -->
@@ -43,7 +42,7 @@
              data-aos="fade-up" data-aos-delay="{{ loop.index * 80 }}">
           
           <!-- Bouncing Icon with staggered delay -->
-          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center
                       bg-gradient-to-br from-amber-400 to-cyan-400 shadow-lg
                       backdrop-blur-md bg-opacity-30 border border-white/10
                       animate-slow-bounce"
@@ -51,7 +50,7 @@
             <img 
               src="{{ theme.link }}/assets/{{ tool.icon }}"
               alt="{{ tool.name }} Logo"
-              class="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+              class="w-20 h-20 sm:w-12 sm:h-12 object-contain"
               loading="lazy"
               aria-label="{{ tool.name }} logo"
             />
