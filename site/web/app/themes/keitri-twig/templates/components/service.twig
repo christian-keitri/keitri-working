@@ -9,25 +9,39 @@
   'violet': 'text-violet-600'
 } %}
 
+<!-- Alpine.js -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 <style>
   @keyframes orbit {
     0%   { transform: rotate(0deg) translate(var(--x), var(--y)) rotate(0deg); }
     100% { transform: rotate(360deg) translate(var(--x), var(--y)) rotate(-360deg); }
   }
 
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+  }
+
   .orbiting-icon {
     animation: orbit 20s linear infinite;
     transform-origin: center center;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
   }
 
-  /* Pause all icons when any is hovered */
   .orbit-system:hover .orbiting-icon {
     animation-play-state: paused;
   }
+
+  .pulse-ring {
+    animation: pulse-ring 2s infinite;
+    border-radius: 9999px;
+  }
 </style>
 
-<section class="relative py-24 bg-stone-900 text-white overflow-hidden">
+<section x-data="{ selected: null }" class="relative py-24 bg-stone-900 text-white overflow-hidden">
+  <!-- Section Header -->
   <div class="text-center mb-12">
     <h2 class="text-3xl md:text-4xl font-bold">
       Explore <span class="text-amber-400">What We Do Best</span>
@@ -37,39 +51,57 @@
     </p>
   </div>
 
-  <!-- Orbit container -->
-  <div class="relative w-full h-[600px] flex items-center justify-center orbit-system">
+  <!-- Flex Container -->
+  <div class="flex flex-col md:flex-row items-center justify-between gap-12 max-w-7xl mx-auto px-6">
 
-    <!-- Central image (sun) -->
-    <div class="absolute w-32 h-32 rounded-full shadow-xl z-20 overflow-hidden">
-      <img
-        src="{{ theme.link }}/assets/pic.jpg"
-        alt="Keitri"
-        class="w-full h-full object-cover"
-      >
-    </div>
+    <!-- Left: Orbit System -->
+    <div class="relative w-[500px] h-[500px] flex items-center justify-center orbit-system shrink-0">
+      <!-- Central Image -->
+      <div class="absolute w-32 h-32 rounded-full shadow-xl z-20 overflow-hidden">
+        <img src="{{ theme.link }}/assets/pic.jpg" alt="Keitri" class="w-full h-full object-cover">
+      </div>
 
-    <!-- Orbiting services -->
-    {% for item in services %}
-      {% set colorClass = colorClasses[item.color] %}
-      <div
-        class="absolute z-10 orbiting-icon"
-        style="--x: {{ item.x }}px; --y: {{ item.y }}px;"
-      >
-        <div class="group w-12 h-12 flex items-center justify-center transition duration-300">
-          <img
-            src="{{ theme.link }}/assets/{{ item.icon }}"
-            alt="{{ item.title }}"
-            class="w-full h-full object-contain"
-          >
-
-          <!-- Tooltip -->
-          <div class="absolute left-1/2 top-full mt-3 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-white text-sm text-gray-800 px-3 py-2 rounded-lg shadow-xl w-52 z-10">
-            <p class="font-semibold {{ colorClass }}">{{ item.title }}</p>
-            <p class="text-xs mt-1">{{ item.description }}</p>
+      <!-- Orbiting Icons -->
+      {% for item in services %}
+        <div
+          class="absolute z-10 orbiting-icon cursor-pointer"
+          style="--x: {{ item.x }}px; --y: {{ item.y }}px;"
+          @click="selected = {
+            title: '{{ item.title|e('js') }}',
+            description: '{{ item.description|e('js') }}',
+            icon: '{{ theme.link }}/assets/service/{{ item.icon }}',
+            preview: '{{ theme.link }}/assets/{{ item.preview }}'
+          }"
+        >
+          <div class="w-12 h-12 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:brightness-110 pulse-ring">
+            <img src="{{ theme.link }}/assets/service/{{ item.icon }}" alt="{{ item.title }}" class="w-full h-full object-contain">
           </div>
         </div>
+      {% endfor %}
+    </div>
+
+  <!-- Right: Detail Card with Gradient Glow on Hover -->
+<div class="w-full md:w-1/2" x-show="selected" x-transition>
+  <div class="relative bg-white/5 backdrop-blur-md text-white rounded-xl p-6 w-full max-w-md mx-auto transition-all duration-300
+              hover:bg-gradient-to-br hover:from-amber-500/20 hover:via-yellow-400/10 hover:to-rose-500/10
+              hover:shadow-2xl hover:shadow-amber-500/30 hover:border hover:border-amber-400/10">
+              
+        <!-- Preview Image -->
+        <img :src="selected.preview" alt="" class="w-full h-54 object-cover rounded-md mb-4">
+
+        <!-- Title and Icon -->
+        <div class="flex items-center gap-4 mb-4">
+          <img :src="selected.icon" alt="" class="w-12 h-12 object-contain">
+          <h4 class="text-lg font-bold text-white" x-text="selected.title"></h4>
+        </div>
+
+        <!-- Description -->
+        <p class="text-sm text-white leading-relaxed" x-text="selected.description"></p>
+
+        <!-- Close Button -->
+        <button @click="selected = null" class="mt-4 text-sm text-amber-400 hover:underline">Close</button>
       </div>
-    {% endfor %}
+    </div>
+
   </div>
 </section>

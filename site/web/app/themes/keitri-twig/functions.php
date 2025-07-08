@@ -35,19 +35,19 @@ add_filter('timber/context', function ($context) {
 
     // Services with orbit positioning
     $services = [
-        [ 'title' => 'Front-End Development',          'icon' => 'service1.png', 'color' => 'cyan',   'description' => 'Build responsive UIs using HTML, CSS, JS, React, and Flutter Web.' ],
-        [ 'title' => 'Back-End Development',           'icon' => 'service2.png', 'color' => 'amber',  'description' => 'Develop APIs and server-side systems with Node.js, Django & more.' ],
-        [ 'title' => 'Full-Stack Solutions',           'icon' => 'service3.png', 'color' => 'rose',   'description' => 'Seamlessly integrate front-end and back-end technologies.' ],
-        [ 'title' => 'UI/UX Design',                   'icon' => 'service4.png', 'color' => 'blue',   'description' => 'Design intuitive, visually pleasing user interfaces and prototypes.' ],
-        [ 'title' => 'Performance & Accessibility',    'icon' => 'service5.png', 'color' => 'yellow', 'description' => 'Conduct audits to ensure speed, performance, and inclusive accessibility.' ],
-        [ 'title' => 'E-commerce Solutions',           'icon' => 'service6.png', 'color' => 'green',  'description' => 'Launch secure, scalable online stores with seamless checkout experiences.' ],
-        [ 'title' => 'Mobile App Design',              'icon' => 'service7.png', 'color' => 'pink',   'description' => 'Design beautiful, user-friendly apps for iOS and Android platforms.' ],
-        [ 'title' => 'Content Strategy',               'icon' => 'service8.png', 'color' => 'violet', 'description' => 'Plan, write, and manage impactful content that aligns with your brand.' ],
+        [ 'title' => 'Front-End Development',          'icon' => 'service1.png', 'preview' => 'preview7.png', 'color' => 'cyan',   'description' => 'Build responsive UIs using HTML, CSS, JS, React, and Flutter Web.' ],
+        [ 'title' => 'Back-End Development',           'icon' => 'service2.png', 'preview' => 'preview6.png', 'color' => 'amber',  'description' => 'Develop APIs and server-side systems with Node.js, Django & more.' ],
+        [ 'title' => 'Full-Stack Solutions',           'icon' => 'service3.png', 'preview' => 'preview2.png', 'color' => 'rose',   'description' => 'Seamlessly integrate front-end and back-end technologies.' ],
+        [ 'title' => 'UI/UX Design',                   'icon' => 'service4.png', 'preview' => 'preview4.png', 'color' => 'blue',   'description' => 'Design intuitive, visually pleasing user interfaces and prototypes.' ],
+        [ 'title' => 'Performance & Accessibility',    'icon' => 'service5.png', 'preview' => 'preview5.png', 'color' => 'yellow', 'description' => 'Conduct audits to ensure speed, performance, and inclusive accessibility.' ],
+        [ 'title' => 'E-commerce Solutions',           'icon' => 'service6.png', 'preview' => 'preview3.png', 'color' => 'green',  'description' => 'Launch secure, scalable online stores with seamless checkout experiences.' ],
+        [ 'title' => 'Mobile App Design',              'icon' => 'service7.png', 'preview' => 'preview1.jpg', 'color' => 'pink',   'description' => 'Design beautiful, user-friendly apps for iOS and Android platforms.' ],
+        [ 'title' => 'Content Strategy',               'icon' => 'service8.png', 'preview' => 'preview8.png', 'color' => 'violet', 'description' => 'Plan, write, and manage impactful content that aligns with your brand.' ],
     ];
 
     // Calculate radial positions
     $count = count($services);
-    $radius = 220;
+    $radius = 150;
     $angleStep = 2 * pi() / $count;
 
     foreach ($services as $i => &$item) {
