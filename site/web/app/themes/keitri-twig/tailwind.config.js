@@ -24,11 +24,11 @@ module.exports = {
         'slide-and-color': {
           '0%': {
             transform: 'translateX(-50%)',
-            backgroundColor: '#22d3ee',
+            backgroundColor: '#00CEE6',
           },
           '100%': {
             transform: 'translateX(50%)',
-            backgroundColor: '#fbbf24',
+            backgroundColor: '#FFFFFF',
           },
         },
         bounce: {
@@ -58,6 +58,18 @@ module.exports = {
         'fade-in-up': 'fadeInUp 1s ease-out forwards',
         'fade-in-up-delay': 'fadeInUp 1s ease-out forwards 0.3s',
       },
+						
+						colors: {
+							myCustomColor: '',
+								'cyan': {
+									'200': '#55DDF2',
+									'400': '#00CEE6',
+									'600': '#10B1CA',
+								},
+
+								
+						},
+
     },
   },
   plugins: [],

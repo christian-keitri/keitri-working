@@ -25,7 +25,8 @@
     <!-- Section Title -->
     <div class="text-center mb-12 px-4">
       <h2 class="text-4xl sm:text-5xl font-bold tracking-tight mb-2">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-cyan-400">
+        {# <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-cyan-400"> #}
+        <span class="bg-clip-text text-cyan-400">
           Tools & Technologies
         </span>
       </h2>
@@ -42,10 +43,14 @@
              data-aos="fade-up" data-aos-delay="{{ loop.index * 80 }}">
           
           <!-- Bouncing Icon with staggered delay -->
-          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center
+          {# <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center
                       bg-gradient-to-br from-amber-400 to-cyan-400 shadow-lg
                       backdrop-blur-md bg-opacity-30 border border-white/10
-                      animate-slow-bounce"
+                      animate-slow-bounce" #}
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center
+                      bg-gradient-to-br from-cyan-400 to-white-400 shadow-lg
+                      backdrop-blur-md bg-opacity-30 border border-white/10
+                      animate-slow-bounce"																						
                style="animation-delay: {{ delay }}s">
             <img 
               src="{{ theme.link }}/assets/{{ tool.icon }}"
