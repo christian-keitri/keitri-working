@@ -74,8 +74,11 @@
             preview: '{{ theme.link }}/assets/{{ item.preview }}'
           }"
         >
-          <div class="w-12 h-12 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:brightness-110 pulse-ring">
+								  {# <div class="w-12 h-12 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:brightness-110 pulse-ring"> #}
+          <div class="w-12 h-12 flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:brightness-110 hover:cyan-40	0 pulse-ring">
             <img src="{{ theme.link }}/assets/service/{{ item.icon }}" alt="{{ item.title }}" class="w-full h-full object-contain">
+
+
           </div>
         </div>
       {% endfor %}

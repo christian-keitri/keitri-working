@@ -35,7 +35,8 @@
     <!-- Section Heading -->
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-snug">
-        Dive into our latest <span class="text-cyan-600">portfolio</span> updates
+        {# Dive into our latest <span class="text-yellow-400">portfolio</span> updates #}
+								Dive into our latest <span class="text-cyan-600">portfolio</span> updates
       </h2>
       <p class="mt-3 text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
         From apps to systems, explore featured case studies we've built across industries.
@@ -57,7 +58,7 @@
           <!-- Content -->
           <div class="w-full md:w-1/2">
             {# <span class="inline-block bg-yellow-400 text-black text-xs font-semibold px-3 py-1 rounded-full mb-3"> #}
-												<span class="inline-block text-cyan-200">
+												<span class="inline-block text-cyan-200 mb-4">
               {{ project.category }}
             </span>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2">{{ project.title }}</h3>
@@ -65,7 +66,8 @@
               {{ project.description }}
             </p>
             <a href="{{ project.url }}"
-               class="inline-block bg-cyan-500 hover:bg-yellow-400 text-black font-semibold text-sm px-5 py-2 rounded-3xl transition">
+               {# class="inline-block bg-cyan-500 hover:bg-yellow-400 text-black font-semibold text-sm px-5 py-2 rounded-3xl transition"> #}
+															class="inline-block bg-cyan-400 hover:bg-cyan-600 text-white font-semibold text-sm px-5 py-2 rounded-3xl transition">
               View case study →
             </a>
           </div>
@@ -78,7 +80,7 @@
     <div class="text-center mt-16">
       <a href="/portfolio"
          {# class="inline-block bg-amber-400 hover:bg-cyan-500 text-black font-bold py-3 px-8 rounded-3xl transition"> #}
-         class="inline-block bg-cyan-400 text-black font-bold py-3 px-8 rounded-3xl transition">									
+         class="inline-block bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-3xl transition">									
         Read More
       </a>
     </div>

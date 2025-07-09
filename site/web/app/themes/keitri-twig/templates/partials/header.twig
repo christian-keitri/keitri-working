@@ -22,19 +22,30 @@
       <ul class="flex items-center gap-4 text-sm font-medium text-white">
         {% for item in nav %}
           {% set is_current = item.current or item.slug == post.post_name %}
-          <li>
+          {# <li>
             <a href="{{ item.url }}"
                class="px-4 py-2 rounded-full transition
                       {{ is_current ? 'bg-black text-white font-semibold'
                                     : 'hover:text-amber-400' }}">
               {{ item.title }}
             </a>
+          </li> #}
+									
+									 <li>
+            <a href="{{ item.url }}"
+               class="px-4 py-2 rounded-full transition
+                      {{ is_current ? 'bg-black text-white font-semibold'
+                                    : 'hover:text-cyan-400' }}">
+              {{ item.title }}
+            </a>
           </li>
+
         {% endfor %}
       </ul>
 
       <a href="{{ site.url ~ '/book-a-call' }}"
-         class="ml-4 inline-flex items-center gap-2 rounded-full px-6 py-2 bg-cyan-400 hover:bg-amber-400 text-black font-semibold transition-all active:scale-95">
+         {# class="ml-4 inline-flex items-center gap-2 rounded-full px-6 py-2 bg-cyan-400 hover:bg-amber-400 text-black font-semibold transition-all active:scale-95"> #}
+         class="ml-4 inline-flex items-center gap-2 rounded-full px-6 py-2 bg-cyan-400 hover:bg-cyan-600 text-white font-semibold transition-all active:scale-95">									
         Book a call
         <i class="fas fa-arrow-up-right-from-square text-sm"></i>
       </a>
