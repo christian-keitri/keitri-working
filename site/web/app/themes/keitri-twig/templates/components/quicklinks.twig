@@ -1,48 +1,46 @@
-<footer class="bg-stone-800 text-white pt-12 pb-6 px-6 md:px-16">
+<footer class="bg-gradient-to-t from-white via-white to-white text-black dark:from-black dark:via-black dark:to-black dark:text-white pt-12 pb-6 px-6 md:px-16 transition-colors duration-500">
   <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
 
     <!-- Left: Logo and Message -->
     <div class="md:col-span-2">
-      <div class="flex items-center space-x-4 mb-6">
-        <img src="{{ theme.link }}/assets/logo.png" alt="Keitri Logo" class="w-14 h-14 rounded-full">
+      <div class="flex items-center space-x-4 mb-4">
+        <img src="{{ theme.link }}/assets/logo.png" alt="Keitri Logo" class="w-14 h-14 rounded-full shadow-lg">
         <p class="text-lg leading-snug">
-          <span class="font-bold text-yellow-400">We want</span>
-          <span class="text-white"> to help you build and develop websites, web apps, mobile apps, custom software solutions, and </span>
-          <span class="font-bold text-yellow-400">more.</span>
+          <span class="font-bold text-yellow-500 dark:text-yellow-400">We want</span>
+          <span> to help you build and develop websites, web apps, mobile apps, custom software solutions, and </span>
+          <span class="font-bold text-yellow-500 dark:text-yellow-400">more.</span>
         </p>
       </div>
 
+      <!-- Buttons and Social Links -->
       <div class="flex items-center space-x-4 mb-6">
-        <a href="#" class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded-full text-sm transition">
+        <a href="#contact" class="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded-full text-sm transition shadow-md hover:shadow-cyan-400/50 dark:bg-yellow-400 dark:hover:bg-cyan-400">
           Book a call ↗
         </a>
         <div class="flex space-x-3 ml-4">
-          <a href="#" class="text-white hover:text-cyan-400"><i class="fab fa-facebook text-xl"></i></a>
-          <a href="#" class="text-white hover:text-cyan-400"><i class="fab fa-github text-xl"></i></a>
-          <a href="#" class="text-white hover:text-cyan-400"><i class="fab fa-telegram-plane text-xl"></i></a>
+          <a href="#" class="text-black dark:text-white hover:text-cyan-400 transition duration-300 hover:drop-shadow-[0_0_5px_cyan]">
+            <i class="fab fa-facebook text-xl"></i>
+          </a>
+          <a href="#" class="text-black dark:text-white hover:text-cyan-400 transition duration-300 hover:drop-shadow-[0_0_5px_cyan]">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="#" class="text-black dark:text-white hover:text-cyan-400 transition duration-300 hover:drop-shadow-[0_0_5px_cyan]">
+            <i class="fab fa-telegram-plane text-xl"></i>
+          </a>
         </div>
       </div>
     </div>
 
     <!-- Right: Quick Links -->
     <div class="md:text-right">
-      <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-      <ul class="space-y-2 text-gray-400">
-        <li><a href="/home" class="hover:text-white">Home</a></li>
-        <li><a href="/about" class="hover:text-white">About Us</a></li>
-        <li><a href="/portfolio" class="hover:text-white">Portfolio</a></li>
-        <li><a href="/contact" class="hover:text-white">Contact Us</a></li>
+      <h3 class="text-lg font-bold mb-4 text-yellow-500 dark:text-yellow-400">Quick Links</h3>
+      <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+        <li><a href="/home" class="hover:text-yellow-500 dark:hover:text-yellow-300 hover:underline underline-offset-4 transition">Home</a></li>
+        <li><a href="/about" class="hover:text-yellow-500 dark:hover:text-yellow-300 hover:underline underline-offset-4 transition">About Us</a></li>
+        <li><a href="/portfolio" class="hover:text-yellow-500 dark:hover:text-yellow-300 hover:underline underline-offset-4 transition">Portfolio</a></li>
+        <li><a href="/contact" class="hover:text-yellow-500 dark:hover:text-yellow-300 hover:underline underline-offset-4 transition">Contact Us</a></li>
       </ul>
     </div>
-  </div>
 
-  <!-- Bottom bar -->
-  <div class="border-t border-gray-700 mt-8 pt-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-    <div class="space-x-4 mb-2 md:mb-0">
-      <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a>
-      <a href="/terms" class="hover:text-white">Terms & Conditions</a>
-      <a href="/cookies" class="hover:text-white">Cookie Policy</a>
-    </div>
-    <div>© 2025 Keitri Software Solution</div>
   </div>
 </footer>

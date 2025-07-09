@@ -19,8 +19,8 @@
   }
 
   @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
-    70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
+    0%   { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+    70%  { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
     100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
   }
 
@@ -40,13 +40,22 @@
   }
 </style>
 
-<section x-data="{ selected: null }" class="relative py-24 bg-stone-900 text-white overflow-hidden">
-  <!-- Section Header -->
-  <div class="text-center mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold">
-      Explore <span class="text-amber-400">What We Do Best</span>
+<section x-data="{ selected: null }" class="relative py-24 bg-white text-gray-900 dark:bg-black dark:text-white overflow-hidden">
+
+  <!-- Section Header with fade-in -->
+  <div class="text-center mb-12" x-data="{ show: false }" x-init="setTimeout(() => show = true, 200)">
+    <p class="text-sm text-amber-500 dark:text-amber-400 uppercase tracking-widest mb-2 transition-all duration-700 ease-out"
+       :class="{ 'opacity-0 -translate-y-2': !show, 'opacity-100 translate-y-0': show }">
+      What We Offer
+    </p>
+    <h2 class="text-3xl md:text-4xl font-bold transition-all duration-700 delay-100 ease-out"
+        :class="{ 'opacity-0 translate-y-4': !show, 'opacity-100 translate-y-0': show }">
+      Explore <span class="bg-gradient-to-r from-amber-400 via-yellow-300 to-cyan-400 text-transparent bg-clip-text">
+        What We Do Best
+      </span>
     </h2>
-    <p class="mt-2 text-white/70 max-w-xl mx-auto">
+    <p class="mt-2 text-gray-600 dark:text-white/70 max-w-xl mx-auto transition-all duration-700 delay-200 ease-out"
+       :class="{ 'opacity-0 translate-y-4': !show, 'opacity-100 translate-y-0': show }">
       From UI/UX to full-stack development, our services are tailored to empower your business with clean design and cutting-edge tech.
     </p>
   </div>
@@ -80,26 +89,35 @@
       {% endfor %}
     </div>
 
-  <!-- Right: Detail Card with Gradient Glow on Hover -->
-<div class="w-full md:w-1/2" x-show="selected" x-transition>
-  <div class="relative bg-white/5 backdrop-blur-md text-white rounded-xl p-6 w-full max-w-md mx-auto transition-all duration-300
-              hover:bg-gradient-to-br hover:from-amber-500/20 hover:via-yellow-400/10 hover:to-rose-500/10
-              hover:shadow-2xl hover:shadow-amber-500/30 hover:border hover:border-amber-400/10">
-              
+    <!-- Right: Detail Card -->
+    <div class="w-full md:w-1/2" x-show="selected" x-transition>
+    <div class="relative bg-white dark:bg-black text-gray-900 dark:text-white rounded-xl p-6 transition-all duration-300
+            hover:bg-gradient-to-br hover:from-amber-500/20 hover:via-yellow-400/10 hover:to-rose-500/10
+            hover:shadow-2xl hover:shadow-amber-500/30 hover:border hover:border-amber-400/10">
+
+
         <!-- Preview Image -->
         <img :src="selected.preview" alt="" class="w-full h-54 object-cover rounded-md mb-4">
 
         <!-- Title and Icon -->
         <div class="flex items-center gap-4 mb-4">
           <img :src="selected.icon" alt="" class="w-12 h-12 object-contain">
-          <h4 class="text-lg font-bold text-white" x-text="selected.title"></h4>
+          <h4 class="text-lg font-bold" x-text="selected.title"></h4>
         </div>
 
         <!-- Description -->
-        <p class="text-sm text-white leading-relaxed" x-text="selected.description"></p>
+        <p class="text-sm leading-relaxed mb-6" x-text="selected.description"></p>
 
-        <!-- Close Button -->
-        <button @click="selected = null" class="mt-4 text-sm text-amber-400 hover:underline">Close</button>
+        <!-- CTA Links -->
+        <div class="flex items-center justify-between">
+          <button @click="selected = null" class="text-sm text-amber-500 hover:underline">
+            Close
+          </button>
+          <a href="#contact" class="text-sm text-amber-500 hover:underline">
+            Inquire Now
+          </a>
+        </div>
+
       </div>
     </div>
 

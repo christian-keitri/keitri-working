@@ -1,7 +1,7 @@
-<section id="testimonials" class="bg-stone-800 py-16 px-4 sm:px-6 lg:px-12">
+<section id="testimonials" class="bg-white text-black dark:bg-black dark:text-white py-16 px-4 sm:px-6 lg:px-12 transition-colors duration-500">
   <div class="max-w-7xl mx-auto">
     
-    <h2 class="text-3xl sm:text-4xl font-bold text-amber-400 text-center mb-12">
+    <h2 class="text-3xl sm:text-4xl font-bold text-amber-400 dark:text-yellow-500 text-center mb-12">
       What Our Clients Say
     </h2>
 
@@ -39,11 +39,11 @@
 
           {% for t in testimonials %}
             <div class="swiper-slide p-6">
-              <figure class="bg-stone-900/80 rounded-xl shadow-md p-6 text-center flex flex-col items-center gap-4 h-full">
+              <figure class="bg-transparent dark:bg-transparent rounded-xl shadow-md p-6 text-center flex flex-col items-center gap-4 h-full transition-colors duration-500">
                 <img src="{{ theme.link }}/assets/{{ t.image }}" alt="{{ t.name }}" class="w-20 h-20 rounded-full object-cover shadow" loading="lazy">
-                <blockquote class="italic text-white text-lg sm:text-xl">“{{ t.quote|striptags }}”</blockquote>
-                <figcaption class="mt-2 text-white font-semibold">{{ t.name }}</figcaption>
-                <p class="text-sm text-gray-400">{{ t.title }}</p>
+                <blockquote class="italic text-gray-800 dark:text-gray-100 text-lg sm:text-xl">“{{ t.quote|striptags }}”</blockquote>
+                <figcaption class="mt-2 text-black dark:text-white font-semibold">{{ t.name }}</figcaption>
+                <p class="text-sm text-gray-600 dark:text-gray-400">{{ t.title }}</p>
               </figure>
             </div>
           {% endfor %}
@@ -52,10 +52,10 @@
 
         <!-- Navigation Arrows -->
         <div class="hidden sm:block">
-          <button class="testimonials-prev absolute -left-6 top-1/2 -translate-y-1/2 text-cyan-400 hover:text-amber-400 z-10">
+          <button class="testimonials-prev absolute -left-6 top-1/2 -translate-y-1/2 text-cyan-500 hover:text-amber-400 z-10 dark:text-blue-500 dark:hover:text-yellow-400">
             <i class="fas fa-chevron-left text-2xl"></i>
           </button>
-          <button class="testimonials-next absolute -right-6 top-1/2 -translate-y-1/2 text-cyan-400 hover:text-amber-400 z-10">
+          <button class="testimonials-next absolute -right-6 top-1/2 -translate-y-1/2 text-cyan-500 hover:text-amber-400 z-10 dark:text-blue-500 dark:hover:text-yellow-400">
             <i class="fas fa-chevron-right text-2xl"></i>
           </button>
         </div>
@@ -63,14 +63,14 @@
 
       <!-- CTA Button -->
       <div class="mt-12 text-center">
-        <a href="{{ site.url }}/get-started" class="inline-block bg-cyan-400 hover:bg-amber-400 text-black font-bold py-3 px-6 rounded-3xl transition">
+        <a href="{{ site.url }}/get-started"
+           class="inline-block bg-cyan-400 hover:bg-amber-400 text-black dark:bg-yellow-400 dark:hover:bg-cyan-400 dark:text-black font-bold py-3 px-6 rounded-3xl transition">
           GET STARTED WITH US
         </a>
       </div>
     </div>
   </div>
 </section>
-
 
 {% block footer_scripts %}
 <script>

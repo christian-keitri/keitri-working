@@ -7,7 +7,8 @@ module.exports = {
     "./*.php"
   ],
 
-  // ✅ Safelist for dynamic classes (e.g. bg-cyan-500, text-rose-600)
+  darkMode: 'class', // 👈 Enables class-based dark mode
+
   safelist: [
     {
       pattern: /(bg|text|border|hover:shadow)-(cyan|amber|rose|blue|yellow)-(50|100|400|500|600)/,
@@ -60,5 +61,6 @@ module.exports = {
       },
     },
   },
+
   plugins: [],
 }

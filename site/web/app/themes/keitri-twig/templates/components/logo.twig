@@ -1,15 +1,17 @@
-<div class="w-full bg-gradient-to-br from-stone-900 to-stone-800 text-white relative overflow-hidden group">
+<div class="w-full bg-white text-black dark:bg-gradient-to-br dark:from-black dark:to-black dark:text-white relative overflow-hidden group transition-colors duration-500">
 
   <!-- Section Header -->
   <div class="container mx-auto px-4 pt-16 pb-10 text-center">
     <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-      Game changers we've <span class="text-amber-400">collaborated</span> with
+      Game changers we've <span class="text-amber-500 dark:text-amber-400">collaborated</span> with
     </h2>
-    <p class="text-white/60 text-sm mt-2">Trusted by innovators, startups, and industry leaders</p>
+    <p class="text-gray-600 dark:text-white/60 text-sm mt-2">
+      Trusted by innovators, startups, and industry leaders
+    </p>
   </div>
 
   <!-- Divider -->
-  <div class="w-full h-px bg-white/10"></div>
+  <div class="w-full h-px bg-gray-200 dark:bg-white/10"></div>
 
   <!-- Marquee Logo Slider -->
   <div class="overflow-hidden py-12 relative">
@@ -28,13 +30,13 @@
       {% for _ in 1..2 %}
         {% for logo in logos %}
           <div class="flex items-center justify-center shrink-0 relative min-w-[6rem]">
-            
-            <!-- Logo Card (no tooltip) -->
-            <div class="p-4 rounded-xl border border-white/10 bg-gradient-to-br from-stone-800/40 to-stone-900/40 backdrop-blur-sm shadow-inner hover:shadow-cyan-400/30 transition duration-300">
+
+            <!-- Logo Card (Dark/Light compatible) -->
+            <div class="p-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-gradient-to-br dark:from-stone-800/40 dark:to-stone-900/40 backdrop-blur-sm shadow-inner hover:shadow-cyan-400/30 transition duration-300">
               <img 
                 src="{{ theme.link }}/assets/logo/{{ logo }}" 
                 alt="Client logo"
-                class="h-20 w-20 sm:h-24 sm:w-24 object-contain grayscale hover:grayscale-0 transition duration-300"
+                class="h-20 w-20 sm:h-24 sm:w-24 object-contain grayscale hover:grayscale-0 transition duration-300 dark:invert-0"
                 loading="lazy"
                 onerror="this.style.border='2px solid red'; this.alt='Missing logo';"
               />
@@ -46,12 +48,12 @@
   </div>
 
   <!-- Divider -->
-  <div class="w-full h-px bg-white/10"></div>
+  <div class="w-full h-px bg-gray-200 dark:bg-white/10"></div>
 </div>
 
 <!-- Pause on Hover -->
 <style>
-.group:hover .animate-marquee {
-  animation-play-state: paused;
-}
+  .group:hover .animate-marquee {
+    animation-play-state: paused;
+  }
 </style>

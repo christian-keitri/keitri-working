@@ -2,49 +2,47 @@
 
 {% if is_available %}
   {% set badge_dot = 'bg-amber-400' %}
-  {% set cta_col   = 'bg-cyan-400 hover:bg-amber-300 text-black' %}
+  {% set cta_col   = 'bg-cyan-400 hover:bg-amber-300 text-black dark:bg-amber-400 dark:hover:bg-cyan-400 dark:text-black' %}
   {% set badge_txt = 'AVAILABLE FOR NEW PROJECTS' %}
 {% else %}
   {% set badge_dot = 'bg-red-500' %}
-  {% set cta_col   = 'bg-red-500 hover:bg-red-400 text-white' %}
+  {% set cta_col   = 'bg-red-500 hover:bg-red-400 text-white dark:bg-red-600 dark:hover:bg-red-400 dark:text-white' %}
   {% set badge_txt = 'CURRENTLY BOOKED' %}
 {% endif %}
 
-<section class="relative bg-stone-800 text-white overflow-hidden">
+<section class="relative bg-white text-black dark:bg-black dark:text-white overflow-hidden transition-colors duration-500">
   <div class="container mx-auto grid md:grid-cols-2 items-center gap-16 px-6 md:px-12 py-20">
 
     <!-- Left Column -->
     <div class="space-y-10">
 
-      <!-- Status Badge & Portfolio CTA -->
+      <!-- Status Badge -->
       <div class="flex items-center gap-4 flex-wrap">
-        <span class="inline-flex items-center gap-2 rounded-full bg-cyan-500/10 px-4 py-1 text-sm font-semibold text-white/90 animate-fade-in">
+        <span class="inline-flex items-center gap-2 rounded-full bg-cyan-500/10 dark:bg-yellow-400/10 px-4 py-1 text-sm font-semibold text-black dark:text-white animate-fade-in">
           <span class="{{ badge_dot }} h-3.5 w-3.5 rounded-full animate-ping"></span>
           {{ badge_txt }}
         </span>
-
-      
       </div>
 
       <!-- Headline -->
       <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight animate-fade-in-up">
-        Empowering<span class="text-amber-400"><br />Digital Vision</span> 
-        <br />Keitri <span class="text-cyan-400">Software Solutions</span>
+        Empowering <span class="text-amber-400 dark:text-yellow-500"><br />Digital Vision</span>
+        <br />Keitri <span class="text-cyan-400 dark:text-blue-400">Software Solutions</span>
       </h1>
 
       <!-- Subtitle -->
-      <p class="text-lg md:text-xl text-white/90 max-w-xl leading-relaxed animate-fade-in-up delay-75">
+      <p class="text-lg md:text-xl text-black/70 dark:text-white/80 max-w-xl leading-relaxed animate-fade-in-up delay-75">
         We craft intuitive websites, mobile apps, and powerful platforms to help businesses innovate and scale with confidence.
       </p>
 
       <!-- Trust Line -->
       <div class="relative max-w-md animate-fade-in-up delay-100">
-        <p class="italic font-medium text-white/70">You're in good company — we deliver what we promise.</p>
+        <p class="italic font-medium text-black/60 dark:text-white/60">You're in good company — we deliver what we promise.</p>
         <span class="block h-1 w-[260px] ml-40 mt-4 bg-gradient-to-r from-cyan-400 to-amber-400 rounded-full animate-slide-and-color"></span>
       </div>
 
       <!-- Stats -->
-      <div class="grid grid-cols-3 gap-6 text-white/90 text-left animate-fade-in-up delay-150">
+      <div class="grid grid-cols-3 gap-6 text-black/80 dark:text-white/80 text-left animate-fade-in-up delay-150">
         {% set stats = [
           {'value': '500+', 'label': 'Projects Delivered'},
           {'value': '99%', 'label': 'Client Satisfaction'},
@@ -52,7 +50,7 @@
         ] %}
         {% for stat in stats %}
           <div x-data="{ count: 0 }" x-init="count = '{{ stat.value }}'" class="transition transform hover:scale-105">
-            <span class="block text-3xl md:text-4xl font-bold text-amber-400" x-text="count"></span>
+            <span class="block text-3xl md:text-4xl font-bold text-amber-400 dark:text-yellow-500" x-text="count"></span>
             <span class="text-xs uppercase tracking-wide">{{ stat.label }}</span>
           </div>
         {% endfor %}
